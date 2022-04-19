@@ -19,11 +19,11 @@ public class EmployeePayroll {
 
         empPayRollService.readData();
 
-        empPayRollService.writeData("Console");
+        empPayRollService.writeData();
 
     }
 
-    public static void readData() {
+    private static void readData() {
         System.out.println("Please Enter the following details :");
         System.out.println("Enter ID");
         int id = sc.nextInt();
@@ -37,31 +37,9 @@ public class EmployeePayroll {
         empPayRollList.add(empPayRollObject);
     }
 
-    public void writeData(String destination) {
-        if (destination.equals("Console"))
-            System.out.println("Employee Pay Roll Data : \n" + empPayRollList.get(0).toString());
-        else if (destination.equals("File"))
-            new EmployeePayRollFileService().writeData(empPayRollList);
+    private void writeData() {
+        System.out.println("Employee Pay Roll Data : \n" + empPayRollList.get(0).toString());
     }
 
-    public int noOfEntries(String destination) {
-        if (destination.equals("Console"))
-            return empPayRollList.size();
-        else if (destination.equals("File"))
-            return new EmployeePayRollFileService().noOfEntries();
-        return 0;
-    }
-
-    public void printData(String destination) {
-        if (destination.equals("Console"))
-            for(EmployeeServices e : empPayRollList)
-            {
-                System.out.println(e.toString()+"\n");
-            }
-        else if (destination.equals("File"))
-            new EmployeePayRollFileService().printData();
-
-
-    }
 }
 
